@@ -62,7 +62,6 @@ Customer-Churn-Prediction/
 ├── churn_model.pkl
 ├── Churn-prediction.ipynb
 ├── WA_Fn-UseC_-Telco-Customer-Churn.csv
-├── requirements.txt
 └── README.md
 ```
 
