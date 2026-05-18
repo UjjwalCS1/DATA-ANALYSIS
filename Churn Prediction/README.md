@@ -62,7 +62,7 @@ Monthly Charges
 Total Charges
 ▶️ How to Run the Project
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/customer-churn-prediction.git
+git clone (https://github.com/UjjwalCS1/DATA-ANALYSIS/edit/main/Churn%20Prediction/README.md)
 cd customer-churn-prediction
 2️⃣ Install Dependencies
 pip install -r requirements.txt
