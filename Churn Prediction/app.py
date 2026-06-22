@@ -1,31 +1,54 @@
-# app.py
-
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
-# Load trained model
-model = pickle.load(open("churn_model.pkl", "rb"))
+# =========================
+# DEBUG INFO
+# =========================
+
+st.write("Current Working Directory:", os.getcwd())
+
+try:
+    st.write("Files in current directory:", os.listdir())
+except Exception as e:
+    st.error(f"Error listing files: {e}")
+
+# =========================
+# LOAD MODEL
+# =========================
+
+try:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    MODEL_PATH = os.path.join(BASE_DIR, "churn_model.pkl")
+
+    st.write("Model Path:", MODEL_PATH)
+
+    with open(MODEL_PATH, "rb") as f:
+        model = pickle.load(f)
+
+    st.success("Model Loaded Successfully")
+
+except Exception as e:
+    st.error(f"Model Loading Error: {e}")
+    st.stop()
+
+# =========================
+# APP TITLE
+# =========================
 
 st.title("Customer Churn Prediction")
-
 st.write("Enter Customer Details")
-
 
 # =========================
 # INPUT FIELDS
 # =========================
 
 gender = st.selectbox("Gender", ["Female", "Male"])
-
 SeniorCitizen = st.selectbox("Senior Citizen", [0, 1])
-
 Partner = st.selectbox("Partner", ["No", "Yes"])
-
 Dependents = st.selectbox("Dependents", ["No", "Yes"])
-
 tenure = st.slider("Tenure", 0, 72)
-
 PhoneService = st.selectbox("Phone Service", ["No", "Yes"])
 
 MultipleLines = st.selectbox(
@@ -89,26 +112,18 @@ PaymentMethod = st.selectbox(
 )
 
 MonthlyCharges = st.number_input("Monthly Charges")
-
 TotalCharges = st.number_input("Total Charges")
 
-
 # =========================
-# MANUAL ENCODING
+# ENCODING
 # =========================
 
 gender = 0 if gender == "Female" else 1
-
 Partner = 0 if Partner == "No" else 1
-
 Dependents = 0 if Dependents == "No" else 1
-
 PhoneService = 0 if PhoneService == "No" else 1
-
 PaperlessBilling = 0 if PaperlessBilling == "No" else 1
 
-
-# MultipleLines
 multiple_map = {
     "No": 0,
     "Yes": 1,
@@ -116,8 +131,6 @@ multiple_map = {
 }
 MultipleLines = multiple_map[MultipleLines]
 
-
-# InternetService
 internet_map = {
     "DSL": 0,
     "Fiber optic": 1,
@@ -125,8 +138,6 @@ internet_map = {
 }
 InternetService = internet_map[InternetService]
 
-
-# Common mapping
 common_map = {
     "No": 0,
     "Yes": 1,
@@ -140,8 +151,6 @@ TechSupport = common_map[TechSupport]
 StreamingTV = common_map[StreamingTV]
 StreamingMovies = common_map[StreamingMovies]
 
-
-# Contract
 contract_map = {
     "Month-to-month": 0,
     "One year": 1,
@@ -149,8 +158,6 @@ contract_map = {
 }
 Contract = contract_map[Contract]
 
-
-# Payment Method
 payment_map = {
     "Electronic check": 0,
     "Mailed check": 1,
@@ -158,7 +165,6 @@ payment_map = {
     "Credit card (automatic)": 3
 }
 PaymentMethod = payment_map[PaymentMethod]
-
 
 # =========================
 # PREDICTION
