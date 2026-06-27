@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+streamlit.*.log
+
+# Local artifacts
+*.pkl
+*.pickle
+*.joblib
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
