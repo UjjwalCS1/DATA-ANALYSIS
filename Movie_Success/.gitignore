@@ -8,12 +8,6 @@ __pycache__/
 venv/
 env/
 
-# Jupyter
-.ipynb_checkpoints/
-
-# Streamlit
-.streamlit/secrets.toml
-streamlit.*.log
 
 # OS/editor files
 .DS_Store
