@@ -15,11 +15,6 @@ env/
 .streamlit/secrets.toml
 streamlit.*.log
 
-# Local artifacts
-*.pkl
-*.pickle
-*.joblib
-
 # OS/editor files
 .DS_Store
 Thumbs.db
